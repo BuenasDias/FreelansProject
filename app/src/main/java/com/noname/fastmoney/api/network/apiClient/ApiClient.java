@@ -1,5 +1,7 @@
 package com.noname.fastmoney.api.network.apiClient;
 
+import com.noname.fastmoney.api.network.apiService.ApiService;
+
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -27,5 +29,7 @@ public class ApiClient {
         return mInstance;
     }
 
-
+    public ApiService getApiService(){
+        return mRetrofit.create(ApiService.class);
+    }
 }

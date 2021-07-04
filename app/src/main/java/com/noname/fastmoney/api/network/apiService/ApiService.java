@@ -11,5 +11,4 @@ public interface ApiService {
 
     @GET("create?apiKey=vpuxXUEwAiBJdR0GA4CqNPcCZxmx6VlLKjvs9ntzHDosVylwzG3XH9OWxxT7&sms[0][channel]=char&sms[0][phone]={phone}&sms[0][text]=Ваш код подтверждения: {smsCode}&sms[0][sender]=VIRTA")
     Call<Response> sendSms(@Path("phone") String userPhone, @Path("smsCode") int smsCode);
-
 }
