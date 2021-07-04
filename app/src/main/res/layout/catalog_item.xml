@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/constr_l"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    android:padding="5dp"
+    android:layout_gravity="top"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:id="@+id/frame_l"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_catalog_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            tools:src="@drawable/dinero" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/description_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        tools:text="Займ до 20 000 гривен мгновенно"
+        app:layout_constraintBottom_toTopOf="@+id/btn_get_money"
+        app:layout_constraintTop_toBottomOf="@+id/frame_l"/>
+
+    <Button
+        android:id="@+id/btn_get_money"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Получить деньги"
+        app:layout_constraintBottom_toBottomOf="@+id/constr_l"
+        tools:layout_editor_absoluteX="2dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
