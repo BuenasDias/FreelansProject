@@ -25,6 +25,8 @@ public class CatalogActivity extends AppCompatActivity {
         mBinding = ActivityCatalogBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
 
+        setTitle("Список предложений");
+
         CatalogItems.getCatalogItems();
         mItemsList = CatalogItems.getCatalogItems();
 

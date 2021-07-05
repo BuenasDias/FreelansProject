@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:mask="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".presentation.activities.MainActivity">
@@ -25,13 +26,18 @@
         tools:visibility="visible"
         android:hint="@string/edit_name"/>
 
-    <EditText
+    <br.com.sapereaude.maskedEditText.MaskedEditText
         android:id="@+id/user_phone"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:inputType="phone"
+        android:typeface="monospace"
+        mask:allowed_chars="1234567890"
+        mask:mask="+7(###)###-##-##"
         tools:visibility="visible"
-        android:hint="@string/edit_phone"/>
+        android:hint="1234567890"
+        />
 
     <Button
         android:id="@+id/btn_authorization"
@@ -46,6 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/edit_sms"
+        android:inputType="number"
         android:visibility="gone"
         tools:visibility="gone"/>
 
@@ -67,5 +74,14 @@
         android:visibility="gone"
         tools:visibility="gone"
         android:text="@string/btn_check_sms"/>
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        tools:visibility="gone"
+        android:text="@string/btn_back"/>
 
 </LinearLayout>

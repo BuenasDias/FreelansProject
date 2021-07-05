@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fast Money</string>
+    <string name="app_name">Займы Онлайн</string>
     <string name="start_text">Для продолжения, Вам необходимо авторизоваться по номеру телефона</string>
     <string name="edit_name">Введите имя</string>
     <string name="edit_phone">Введите телефон</string>
@@ -7,4 +7,5 @@
     <string name="btn_get_sms">Авторизоваться</string>
     <string name="btn_check_sms">Подтвердить</string>
     <string name="error_sms">Неверный код</string>
+    <string name="btn_back">Вернуться назад</string>
 </resources>
