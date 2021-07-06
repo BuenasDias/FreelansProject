@@ -4,8 +4,8 @@
     <string name="edit_name">Введите имя</string>
     <string name="edit_phone">Введите телефон</string>
     <string name="edit_sms">Код из смс</string>
-    <string name="btn_get_sms">Авторизоваться</string>
-    <string name="btn_check_sms">Подтвердить</string>
+    <string name="btn_get_sms">Получить смс</string>
+    <string name="btn_check_sms">Продолжить</string>
     <string name="error_sms">Неверный код</string>
     <string name="btn_back">Вернуться назад</string>
 </resources>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -41,12 +42,12 @@ public class MainActivity extends AppCompatActivity {
         passCode = generateCode();
         fullTextSms = "Ваш код подтверждения: " + passCode;
 
-
         mBinding.btnAuthorization.setOnClickListener(view -> {
 
-            if(mBinding.userPhone.getRawText().length() == 10){
+            if(mBinding.userPhone.getRawText().length() == 9){
 
-                String phone = "7" + mBinding.userPhone.getRawText();
+                String phone = "380" + mBinding.userPhone.getRawText();
+                Log.d("TAG", "380" + mBinding.userPhone.getRawText());
 
                 ApiClient.getInstance()
                         .getApiService()
