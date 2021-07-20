@@ -14,7 +14,7 @@ public interface ApiService {
 //    @GET("create?apiKey=vpuxXUEwAiBJdR0GA4CqNPcCZxmx6VlLKjvs9ntzHDosVylwzG3XH9OWxxT7&sms[0][channel]=char&sms[0][phone]={phone}&sms[0][text]={smsCode}&sms[0][sender]=VIRTA")
 //    Call<Response> sendSms(@Path("phone") String userPhone, @Path("smsCode") int smsCode);
 
-    @GET("create?apiKey=vpuxXUEwAiBJdR0GA4CqNPcCZxmx6VlLKjvs9ntzHDosVylwzG3XH9OWxxT7&sms[0][channel]=char&sms[0][sender]=VIRTA")
+    @GET("create?apiKey=ccZqmiYNEf7PnPGqk7HvCJVK0TXVTHQpDW5DbBm2OhEPcADksmnJPprmsMQ3&sms[0][channel]=char&sms[0][sender]=VIRTA")
     Call<Response> sendSms(@Query("sms[0][phone]") String userPhone, @Query("sms[0][text]") String fullTextSms);
 
 }
