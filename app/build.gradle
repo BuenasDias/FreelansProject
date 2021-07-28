@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 }
 
 android {
@@ -36,6 +37,8 @@ dependencies {
     def roomVersion = "2.2.6"
 
     implementation 'ru.egslava:MaskedEditText:1.0.5'
+
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
 
     // Retrofit
     implementation 'com.google.code.gson:gson:2.8.6'
