@@ -12,7 +12,6 @@ public class ApiClient {
     private static final String BASE_URL = "https://new.smsgorod.ru/apiSms/";
     private final Retrofit mRetrofit;
 
-
     private ApiClient(){
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
