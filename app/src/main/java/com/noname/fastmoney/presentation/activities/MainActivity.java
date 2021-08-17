@@ -7,9 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.noname.fastmoney.App;
+import com.noname.fastmoney.R;
 import com.noname.fastmoney.api.network.apiClient.ApiClient;
 import com.noname.fastmoney.api.requests.auth.Response;
 import com.noname.fastmoney.data.dao.UserDao;
@@ -24,11 +27,13 @@ import retrofit2.Callback;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final String TAG = "TAG";
     private ActivityMainBinding mBinding;
     private UserDao userDao;
     private Response responseBody;
     private int passCode;
     private String fullTextSms;
+    private String codeCountry = "7";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +47,42 @@ public class MainActivity extends AppCompatActivity {
         passCode = generateCode();
         fullTextSms = "Ваш код подтверждения: " + passCode;
 
+        // Работаем со спиннером
+        ArrayAdapter<?> adapter =
+                ArrayAdapter.createFromResource(this, R.array.countries, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        mBinding.spinner.setAdapter(adapter);
+
+        mBinding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent,
+                                       View itemSelected, int selectedItemPosition, long selectedId) {
+
+                if (selectedItemPosition == 0) {
+                    mBinding.userPhone.setMask("(###)###-##-##");
+                    codeCountry = "7";
+
+                    Utils.country = "RU";
+                    Log.d(TAG, "Utils.country: " + Utils.country);
+
+                } else if (selectedItemPosition == 1) {
+                    mBinding.userPhone.setMask("(##)###-##-##");
+                    codeCountry = "380";
+
+                    Utils.country = "UK";
+                    Log.d(TAG, "Utils.country: " + Utils.country);
+                }
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
         mBinding.btnAuthorization.setOnClickListener(view -> {
 
-            if(mBinding.userPhone.getRawText().length() == 9){
+            if(mBinding.userPhone.getRawText().length() == 10 || mBinding.userPhone.getRawText().length() == 9){
 
-                String phone = "380" + mBinding.userPhone.getRawText();
-                Log.d("TAG", "380" + mBinding.userPhone.getRawText());
+                String phone = codeCountry + mBinding.userPhone.getRawText();
 
                 ApiClient.getInstance()
                         .getApiService()
@@ -106,13 +141,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void showEditPhone() {
         mBinding.userName.setVisibility(View.VISIBLE);
-        mBinding.userPhone.setVisibility(View.VISIBLE);
+        mBinding.llMack.setVisibility(View.VISIBLE);
         mBinding.btnAuthorization.setVisibility(View.VISIBLE);
     }
 
     private void hideEditPhone() {
         mBinding.userName.setVisibility(View.GONE);
-        mBinding.userPhone.setVisibility(View.GONE);
+        mBinding.llMack.setVisibility(View.GONE);
         mBinding.btnAuthorization.setVisibility(View.GONE);
     }
 

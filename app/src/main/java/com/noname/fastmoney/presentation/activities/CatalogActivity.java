@@ -27,8 +27,11 @@ public class CatalogActivity extends AppCompatActivity {
 
         setTitle("Список предложений");
 
-        CatalogItems.getCatalogItems();
-        mItemsList = CatalogItems.getCatalogItems();
+        if(Utils.country.equalsIgnoreCase("uk")){
+            mItemsList = CatalogItems.getCatalogItemsUk();
+        } else {
+            mItemsList = CatalogItems.getCatalogItemsRu();
+        }
 
         mLayoutManager = new GridLayoutManager(this, 2);
         mBinding.recyclerCatalog.setLayoutManager(mLayoutManager);

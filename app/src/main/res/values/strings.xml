@@ -8,4 +8,9 @@
     <string name="btn_check_sms">Продолжить</string>
     <string name="error_sms">Неверный код</string>
     <string name="btn_back">Вернуться назад</string>
+
+    <string-array name="countries">
+        <item>ru +7</item>
+        <item>ua +380</item>
+    </string-array>
 </resources>

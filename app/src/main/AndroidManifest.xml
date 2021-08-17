@@ -31,18 +31,17 @@
             android:name=".presentation.activities.CatalogActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-
         </activity>
         <activity
             android:name=".presentation.activities.MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
     </application>
