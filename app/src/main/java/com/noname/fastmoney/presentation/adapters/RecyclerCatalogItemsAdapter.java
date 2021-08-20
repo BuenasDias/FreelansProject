@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.noname.fastmoney.R;
 import com.noname.fastmoney.data.entities.CatalogItems;
+import com.noname.fastmoney.presentation.activities.Utils;
 import com.noname.fastmoney.presentation.activities.WebViewActivity;
 import com.squareup.picasso.Picasso;
 
@@ -46,7 +47,16 @@ public class RecyclerCatalogItemsAdapter extends RecyclerView.Adapter<RecyclerCa
                 .load(catalogItems.image)
                 .into(holder.mImageView);
 
+        holder.mDescription.setVisibility(View.VISIBLE);
         holder.mDescription.setText(catalogItems.description);
+
+//        if(Utils.country.equalsIgnoreCase("ru")){
+//            holder.mDescription.setVisibility(View.GONE);
+//        }else {
+//            holder.mDescription.setVisibility(View.VISIBLE);
+//            holder.mDescription.setText(catalogItems.description);
+//        }
+
         holder.mBtnGetMoney.setOnClickListener(view -> {
             Intent intent = new Intent(mContext, WebViewActivity.class);
             intent.putExtra("url", catalogItems.url);

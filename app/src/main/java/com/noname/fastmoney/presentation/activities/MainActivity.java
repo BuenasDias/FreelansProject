@@ -24,6 +24,9 @@ import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.FullscreenPromptBackground;
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private int passCode;
     private String fullTextSms;
     private String codeCountry = "7";
+    private String country = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         checkAuth();
         passCode = generateCode();
         fullTextSms = "Ваш код подтверждения: " + passCode;
+        showBalansPromt(mBinding.spinner);
 
         // Работаем со спиннером
         ArrayAdapter<?> adapter =
@@ -62,12 +67,16 @@ public class MainActivity extends AppCompatActivity {
                     mBinding.userPhone.setMask("(###)###-##-##");
                     codeCountry = "7";
 
+                    country = "ru";
+
                     Utils.country = "RU";
                     Log.d(TAG, "Utils.country: " + Utils.country);
 
                 } else if (selectedItemPosition == 1) {
-                    mBinding.userPhone.setMask("(##)###-##-##");
+                    mBinding.userPhone.setMask("(###)###-###");
                     codeCountry = "380";
+
+                    country = "uk";
 
                     Utils.country = "UK";
                     Log.d(TAG, "Utils.country: " + Utils.country);
@@ -119,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 User user = new User();
                 user.id = 1;
                 user.auth = 1;
+                user.country = country;
 
                 userDao.updateUser(user);
 
@@ -131,6 +141,15 @@ public class MainActivity extends AppCompatActivity {
             showEditPhone();
             hideEditPass();
         });
+    }
+
+    private void showBalansPromt(View view) {
+        new MaterialTapTargetPrompt.Builder(this)
+                .setTarget(view)
+                .setPrimaryText("Выберите код страны")
+                .setPromptBackground(new FullscreenPromptBackground())
+                .setPromptFocal(new RectanglePromptFocal())
+                .show();
     }
 
     private void hideEditPass() {

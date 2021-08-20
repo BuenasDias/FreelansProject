@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.noname.fastmoney.App;
 import com.noname.fastmoney.data.entities.CatalogItems;
+import com.noname.fastmoney.data.entities.User;
 import com.noname.fastmoney.databinding.ActivityCatalogBinding;
 import com.noname.fastmoney.presentation.adapters.RecyclerCatalogItemsAdapter;
 
@@ -24,10 +26,10 @@ public class CatalogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mBinding = ActivityCatalogBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
-
+        User user = App.getInstance().getDatabase().mUserDao().getUserById(1);
         setTitle("Список предложений");
 
-        if(Utils.country.equalsIgnoreCase("uk")){
+        if(user.country.equalsIgnoreCase("uk")){
             mItemsList = CatalogItems.getCatalogItemsUk();
         } else {
             mItemsList = CatalogItems.getCatalogItemsRu();

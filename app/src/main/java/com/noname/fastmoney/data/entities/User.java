@@ -14,4 +14,6 @@ public class User {
     public String phone;
 
     public String name;
+
+    public String country;
 }

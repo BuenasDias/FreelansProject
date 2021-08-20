@@ -11,7 +11,7 @@ import com.onesignal.OneSignal;
 public class App extends Application {
 
     public static App instance;
-    private static final String ONESIGNAL_APP_ID = "7a9d5638-813f-4ed6-8cbe-5a0f44b91182";
+    private static final String ONESIGNAL_APP_ID = "7106f5aa-b47f-498b-b0b6-f3a4732814c6";
 
     private AppDatabase mDatabase;
 
@@ -29,6 +29,7 @@ public class App extends Application {
         instance = this;
         mDatabase = Room.databaseBuilder(this, AppDatabase.class, "database")
                 .allowMainThreadQueries()
+                .addMigrations(AppDatabase.MIGRATION_1_2)
                 .build();
 
         if (mDatabase.mUserDao().getUserById(1) == null) {
@@ -38,6 +39,7 @@ public class App extends Application {
             user.auth = 0;
             user.name = "test";
             user.phone = "test";
+            user.country = "ru";
 
             mDatabase.mUserDao().insertUser(user);
         }
